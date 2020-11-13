@@ -1,0 +1,54 @@
+
+h1 {
+    color: green;
+}
+body {
+    background-color: rgba(232, 230, 240, 0.719);
+}
+
+.Grid_container{
+    display: grid;
+    justify-content: space-evenly;
+    grid-template-areas: 
+    'picture picture picture header header header header header header header'
+    'picture picture picture header header header header header header header'
+    'picture picture picture main main main main main main main'
+    'picture picture picture main main main main main main main'
+    'skills skills skills main main main main main main main'
+    'skills skills skills main main main main main main main'
+    'skills skills skills main main main main main main main'
+    'skills skills skills main main main main main main main'
+    'skills skills skills main main main main main main main'
+    'skills skills skills main main main main main main main'
+    'skills skills skills main main main main main main main'
+    'skills skills skills main main main main main main main'
+    'skills skills skills main main main main main main main'
+    'footer footer footer footer footer footer footer footer footer footer'
+    'footer footer footer footer footer footer footer footer footer footer' 
+    ;
+    grid-gap: 5px;
+    padding: 5px;
+    margin: 5px;
+    border: 5px;
+    width: 1000px;
+    height: 750px;
+   
+}
+
+.item1{grid-area: header;
+    background-color: rgba(54, 172, 240, 0.719);
+;}
+.item2{grid-area: picture;
+    background-color: rgba(224, 10, 10, 0.719);
+    }
+.item3{grid-area: skills;
+    background-color: rgba(229, 245, 9, 0.719);
+}
+.item4{grid-area: main;
+    background-color: rgba(4, 243, 4, 0.719);}
+.item5{grid-area: footer;
+    background-color: rgba(204, 11, 230, 0.719);}
+
+div > div {
+    background-color: wheat;
+}
