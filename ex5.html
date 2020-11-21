@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>HW5 - JS Practice</title>
+    <script>
+        function functionA(){
+                document.getElementById("P1").innerHTML= "The Malt Type";
+            }
+    </script>
+</head>
+<body >
+    <p id ="P1">What gives the beer flavour?</p>
+        <button type = "button" onclick="functionA()">Click to see the answer</button>
+
+    <br>
+    <p id="P2"></p>
+    <script>
+       var myFavBeer = "Pale Ale"
+        document.getElementById("P2").innerHTML = "My Favorite Beer is " + myFavBeer;
+    </script>
+
+    <br>
+    <p id="P3"></p>
+    <script>
+        function functionPower (a,b){
+                return  "The result of " + a + "^" + b + " is "  +  a**b;
+        }
+        document.getElementById("P3").innerHTML= functionPower(4,8);
+    </script>
+
+    <br>
+    <h3>Beers types:</h3>
+    <br>
+    <img id= "beer" alt="" src="stout.jpeg" width =20%>
+    <br>
+    <button onclick="document.getElementById('beer').src='wheat.jpeg'">Wheat</button>
+    <button onclick="ChangeBeer()">Stout</button>
+    <script>
+        function ChangeBeer(){
+            document.getElementById("beer").src= "stout.jpeg";
+        }
+    </script>
+    <button onclick="ChangeBeerA()">Amber</button>
+    <script>
+        function ChangeBeerA(){
+            document.getElementById("beer").src= "amber.jpg";
+        }
+    </script>
+
+</body>
+</html>
