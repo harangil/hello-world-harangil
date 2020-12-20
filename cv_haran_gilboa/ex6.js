@@ -6,5 +6,5 @@ function change_back(col){
 }
 function say_thank_you(x){
     alert("Thank you! I will contact as soon as possible!");
-    document.getElementById("myform").innerHTML = "Request submitted" ;
+    // document.getElementById("myform").innerHTML = "Request submitted" ;
 }
