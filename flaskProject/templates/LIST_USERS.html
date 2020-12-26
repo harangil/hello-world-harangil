@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>USERS LIST</title>
+    <link rel = "stylesheet" href="{{ url_for('static' , filename = 'css/ex8_css.css') }}">
+</head>
+<body class="center2">
+<div class="Grid_container">
+    {% include ('header.html') %}
+
+    <h1 class="center2">Users List</h1>
+    <main>
+        <script src = "{{ url_for('static', filename = 'js/user_list.js') }}"></script>
+    </main>
+
+{% include ('footer.html') %}
+    <div/>
+</body>
+</html>

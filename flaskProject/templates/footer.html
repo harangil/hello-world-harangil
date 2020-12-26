@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel = "stylesheet" href=" {{ url_for('static' , filename = 'css/ex8_css.css') }}">
+
+<script src={{ url_for('static', filename = 'js/ex8.js') }}></script>
+</head>
+<body>
+ <div class="item5">
+
+        <img src="static\img\email.jfif" alt="email icon" width="30" class="center2"/>
+        <h4 class="center2">harangilboa3@gmail.com </h4>
+
+       <img src="static\img\phone.png" alt="phone icon" height="35" class="center2"/>
+       <h4 class="center2">054-7238295</h4>
+
+       <img src="static\img\linkedin.png" alt="linkedin icon" width="50" height="35" class="center2"/>
+       <a href="https://www.linkedin.com/in/haran-gilboa-2474aa198/" onmouseover="style.color='red'; style.fontSize='x-large'" style="font-size: larger;" class="center2"> linkedin.com - Haran Gilboa</a>
+
+       <a href=" {{ url_for('static',filename='img\Haran Gilboa CV.pdf')}}" onmouseover="style.color='red'; style.fontSize='x-large'" style="font-size: larger;" class="center2" download>Click here to Download my resume</a>
+
+       <form id="myform"  >
+        <h3 class="center2" onmouseover="style.color='red'; style.fontSize='x-large'" style="font-size: larger;">leave your information here and I will contact you shortly</h3>
+        <lable for="Name" class="center2">Name: </lable>
+        <input type="text" id="Name" name="Name" onfocusin="change_color(this)" onfocusout="change_back(this)" class="center2"/>
+
+        <lable for="PhoneNum" class="center2">Phone number: </lable>
+        <input type="text" id="PhoneNum" name="PhoneNum" onfocusin="change_color(this)" onfocusout="change_back(this)" class="center2"/>
+
+
+
+        <a href = "{{ url_for('My_Users_List')}}" target="_blank" class="center2"> <h2> <img src="static\img\concat_img.jpg" alt = "Picture of concat list" width = 120px > <br> Contact List</h2></a>
+        <a href="{{ url_for('My_Hobbies') }}"   class="center2"><h2>My Hobbies<h2/></a>
+
+        <lable for="Submit" class="center2"></lable>
+        <input type="submit" value="Submit" style="background-color: seashell;" onclick="say_thank_you(this)" class="center2"/>
+
+        </form>
+        <a href="{{ url_for('start') }}" style="background-color: lightskyblue">Back To Main</a>
+    </div>
+</body>
+</html>
