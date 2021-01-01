@@ -5,12 +5,23 @@
     <title></title>
     <link rel = "stylesheet" href=" {{ url_for('static' , filename = 'css/ex8_css.css') }}">
 
-<script src={{ url_for('static', filename = 'js/ex8.js') }}></script>
+<script src="{{ url_for('static', filename = 'js/ex8.js') }}"></script>
 </head>
 <body>
 <div class="item1" >
         <h1>Haran Gilboa</h1>
         <h3>Data scientist at OOLO, a fourth year student at Industrial Engineering & Management specialization at Intelligent Systems </h3>
+        {% if session.get('log_in') %}
+            <br>
+            {% if session.get('username') != '' %}
+                <h2> Welcome, {{ session.get('username')}}</h2>
+            {% else %}
+                <h2> Welcome, Guest</h2>
+            {% endif %}
+        {% else %}
+            <h2> Welcome, Guest</h2>
+        {% endif %}
+        <a href="{{ url_for('log_out') }}"><h3>Logout</h3></a>
     </div>
     <div class="item2">
 

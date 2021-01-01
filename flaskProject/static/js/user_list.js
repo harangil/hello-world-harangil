@@ -18,3 +18,4 @@ function createUsersList(users){
         curr_main.appendChild(section);
     }
 }
+
