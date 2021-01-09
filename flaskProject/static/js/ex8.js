@@ -5,6 +5,10 @@ function change_back(col){
     col.style.backgroundColor= "white";
 }
 function say_thank_you(x){
-    alert("Thank you! I will contact as soon as possible!");
+    alert("Thank you! we recive your input");
+    // document.getElementById("myform").innerHTML = "Request submitted" ;
+}
+function say_thank_you2(x){
+    alert("Thank you! the data will be update!");
     // document.getElementById("myform").innerHTML = "Request submitted" ;
 }

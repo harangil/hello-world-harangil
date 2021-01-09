@@ -1,5 +1,6 @@
 from flask import Flask, redirect, url_for,render_template
 from flask import request, session
+import mysql.connector
 
 app = Flask(__name__)
 app.secret_key = '123'
@@ -64,6 +65,69 @@ def assignment9_func():
 
     return render_template('ex6.html' )
 
+def internet_db(query, query_type: str):
+    return_value = False
+    connection = mysql.connector.connect(host = 'localhost',
+                                         user = 'root',
+                                         passwd = '591235056',
+                                         database = 'ex10')
+    cursor = connection.cursor(named_tuple = True)
+    cursor.execute(query)
+
+    if query_type == 'commit':
+        # INSERT UPDATE DELETE
+        # returns number of row modified
+        connection.commit()
+        return_value = True
+
+    if query_type == 'fetch':
+        # SELECT
+        # return query selected or False
+        query_result = cursor.fetchall()
+        return_value = query_result
+
+    connection.close()
+    cursor.close()
+    return return_value
+
+@app.route('/users')
+def users():
+    query = "select * from users"
+    query_result = internet_db(query, query_type='fetch')
+    return render_template('assignment10.html', users=query_result)
+
+@app.route('/insert_user', methods={'GET','POST'})
+def insert_user():
+    if request.method == 'POST':
+        first_name = request.form['first_name']
+        last_name = request.form['last_name']
+        email = request.form['email']
+        query = "INSERT INTO users(first_name,last_name,email) VALUES ('%s','%s','%s')" % (first_name,last_name,email)
+        internet_db(query=query,query_type='commit')
+        return redirect('/users')
+
+    return redirect('/users')
+
+@app.route('/delete_user', methods={'GET','POST'})
+def delete_user():
+    if request.method == 'GET':
+        user_id = request.args['id']
+        query = "DELETE FROM users WHERE id='%s';" % user_id
+        internet_db(query=query, query_type='commit')
+        return redirect('/users')
+    return 'delete user'
+
+@app.route('/update_details', methods={'GET','POST'})
+def update_details():
+    if request.method == 'POST':
+        first_name = request.form['first_name']
+        last_name = request.form['last_name']
+        email = request.form['email']
+        user_id = request.form['id']
+        query = "UPDATE users SET first_name = '%s',last_name='%s',email='%s' WHERE id='%s';" % (first_name,last_name,email,user_id)
+        internet_db(query=query, query_type='commit')
+        return redirect('/users')
+    return 'update user details'
 
 
 if __name__ == '__main__':
