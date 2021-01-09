@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>USERS LIST</title>
+    <link rel = "stylesheet" href="{{ url_for('static' , filename = 'css/ex8_css.css') }}">
+</head>
+<body class="center2">
+<div class="Grid_container">
+    {% include ('header.html') %}
+
+    <h1 class="center2">Users List</h1>
+    <main>
+        <script src = "{{ url_for('static', filename = 'js/user_list.js') }}"></script>
+        <form id="myform2" action= "/assignment9" method = "GET" >
+        <h3 class="center2" onmouseover="style.color='red'; style.fontSize='x-large'" style="font-size: larger;">search in contact list</h3>
+        <lable for="Name_f" class="center2">First Name: </lable>
+        <input type="text" id="Name_f" name="Name_f" onfocusin="change_color(this)" onfocusout="change_back(this)" class="center2" />
+
+        <lable for="Name_l" class="center2">Last Name: </lable>
+        <input type="text" id="Name_l" name="Name_l" onfocusin="change_color(this)" onfocusout="change_back(this)" class="center2"/>
+
+
+        <lable for="Submit" class="center2"></lable>
+        <input type="submit" value="Submit" style="background-color: seashell;" onclick="say_thank_you(this)" class="center2"/>
+
+        </form>
+    </main>
+
+    {% include ('footer_contact_list.html') %}
+    <div/>
+</body>
+</html>

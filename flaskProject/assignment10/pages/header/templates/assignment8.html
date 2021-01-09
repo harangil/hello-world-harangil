@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>assignment8</title>
+<link rel = "stylesheet" href=" {{ url_for('static' , filename = 'css/ex8_css.css') }}">
+
+</head>
+<body>
+<div class="Grid_container">
+
+        {% include ('header.html') %}
+
+
+        <div class="item3" >
+            {% block hobbies %}
+                {% set page_header = "my hobbies:" %}
+                <h1>{{ page_header | upper }}</h1>
+                {%  if hobbies %}
+                    <ol>
+                        {% for hobby in hobbies %}
+                            <li><b>{{ hobby | lower }}</b></li>
+                        {% endfor %}
+                    </ol>
+                {% else %}
+                    <h3>I have no hobbies</h3>
+                {% endif %}
+
+            {%  endblock %}
+
+
+        </div>
+        <div class="item4">
+            {% block beers %}
+
+        {% set block_header = "my beers" %}
+        <h1>{{ block_header | upper }}</h1>
+
+        <ul>
+            {% for kind,type in Beers.items() %}
+                <li>{{ kind }} : {{ type }}</li>
+                <br>
+            {%  endfor %}
+        </ul>
+
+
+
+            {%  endblock %}
+        </div>
+
+        {% include ('footer.html') %}
+</div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete user</title>
+<script src="{{ url_for('static', filename = 'js/ex8.js') }}"></script>
+</head>
+<body>
+    <h2>Delete user:</h2>
+        <form action = "/delete_user" method= "GET">
+            User ID: <label><input name = "id" type="text"> </label>
+            <br>
+            <br>
+
+            <input type="submit" onclick="say_thank_you(this)">
+
+        </form>
+
+</body>
+</html>

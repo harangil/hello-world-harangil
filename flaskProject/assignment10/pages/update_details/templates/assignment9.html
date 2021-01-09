@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>assignment9__!</title>
+    <link rel = "stylesheet" href=" {{ url_for('static' , filename = 'css/ex8_css.css') }}">
+
+</head>
+<body>
+<div class="Grid_container">
+
+        {% set contact_list  = {'Michael': 'Lawson', 'Lindsay': 'Ferguson', 'Tobias ': 'Funke', 'Byron': 'Fields', 'George': 'Edwards','Rachel': 'Howell'} %}
+        {% set contact_list_last  = [ 'Lawson',  'Ferguson', 'Funke', 'Fields', 'Edwards','Howell'] %}
+        {% set contact_list_emails  = {'Michael': 'Michael@gmail.com', 'Lindsay': 'Lindsay@gmail.com', 'Tobias ': ' Tobias@gamil.com', 'Byron': 'Byron@gmail.com ', 'George': 'George@gamil.com','Rachel' :'Rachel@gamil.com'} %}
+
+        {% set page_name = 'assignment9' %}
+        {% include ('header.html') %}
+
+        <div class="item3" >
+
+            {% if method == 'POST' %}
+                 {% block regis %}
+                {% set page_header = "Registration" %}
+                {% if name != '' %}
+                    <h1> Welcome, {{name}}</h1>
+                {% else %}
+                    <h1> Welcome, Guest</h1>
+                {% endif %}
+
+                {%  endblock %}
+            {% endif %}
+            {% if method == 'GET' %}
+                {% set block_header = "search results for:" %}
+                     <h1>{{ block_header | upper }}</h1>
+                    <br>
+                    <h2>{{ Name_f | lower }} {{ Name_l | lower  }}</h2>
+                {% if  Name_f=='' and Name_l =='' %}
+                    <h3>all results</h3>
+                    <ul>
+                        {% for first,last in contact_list.items() %}
+                            <li>{{ first }} - {{ last }}, email: {{ contact_list_emails[first] }}</li>
+                            <br>
+                        {%  endfor %}
+                    </ul>
+                {% endif %}
+
+            {% endif %}
+
+        </div>
+
+        <div class="item4" >
+            {% if method == 'POST'  %}
+                 {% block greerting %}
+                {% set page_header = "Registration" %}
+                <h1> have a nice day!</h1>
+
+                {%  endblock %}
+            {% endif %}
+
+            {% if method == 'GET'  %}
+
+                {% if Name_f!='' or Name_l !=''%}
+                     {% block contact %}
+                         <h3> results</h3>
+                         {%  if (Name_f not in  contact_list and Name_l not in  contact_list_last)%}
+                            <h4> No results found</h4>
+                         {%  else %}
+                             <ul>
+                                {% for first,last in contact_list.items() %}
+                                    {% if first == Name_f or last == Name_l %}
+                                        <li>{{ first }} - {{ last }}, email: {{ contact_list_emails[first]  }}</li>
+                                        <br>
+                                    {% endif %}
+                                {%  endfor %}
+                            </ul>
+                         {%  endif %}
+                     {%  endblock %}
+
+
+                {% else %}
+                    <main>
+                     <script src = "{{ url_for('static', filename = 'js/user_list.js') }}"></script>
+                    </main>
+                {% endif %}
+
+            {% endif %}
+        </div>
+
+
+        {% include ('footer.html') %}
+</div>
+</body>
+</html>

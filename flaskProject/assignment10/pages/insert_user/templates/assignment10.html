@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ex10</title>
+    <link rel = "stylesheet" href=" {{ url_for('static' , filename = 'css/ex8_css.css') }}">
+</head>
+<body>
+<div class="Grid_container">
+
+    {% include ('header.html') %}
+
+    <div class="item3" >
+        <h1>All the users: </h1>
+        <ul>
+            {% if users %}
+                {% for user in users %}
+                    <li>
+                        {{ user.id }}: <b>{{ user.first_name }} , {{ user.last_name }}</b>  ({{ user.email }})
+                    </li>
+
+                {% endfor %}
+            {% endif %}
+
+        </ul>
+
+
+    </div>
+
+    <div class="item4" >
+        {% include ('insert_user.html') %}
+        {% include ('delete_user.html') %}
+        {% include ('update_details.html') %}
+
+{##}
+{##}
+    </div>
+
+
+    {% include ('footer.html') %}
+
+</div>
+</body>
+</html>

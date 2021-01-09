@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        Haran Gilboa CV
+    </title>
+
+<link rel = "stylesheet" href=" {{ url_for('static' , filename = 'css/ex8_css.css') }}">
+
+<script src="{{ url_for('static', filename = 'js/ex8.js') }} "> </script>
+
+</head>
+<body>
+<div class="Grid_container">
+    {% include ('header.html') %}
+
+    <div class="item3">
+        <h4 style="color:white">Courses & Skills:</h4>
+        <ul>
+            <li>Object Oriented Programming</li>
+            <li>Data Bases</li>
+            <li>Algorithms and Complexity</li>
+            <li>Production Planning & Control</li>
+            <li>Solidworks</li>
+            <li>MS Office</li>
+            <li>Machine Learning</li>
+            
+        </ul>
+        <h4 style="color:white"> Programming:</h4>
+        <ul>
+            <li>Python</li>
+            <li>Java</li>
+            <li>SQL/ noSQL</li>
+            <li>HTML, CSS, JavaScript</li>
+            <li>linux</li>
+            <li>Power BI</li>
+            <li>R'</li>
+        </ul>
+        <h4 style="color:white"> Languages:</h4>
+        <ul>
+            <li>Hebrew - Native</li>
+            <li>English - Fluent</li>
+        </ul>
+
+        
+    </div>
+    <div class="item4">
+        <h3 style="color:white">Summary</h3>
+        <h4 >A third-year student at Ben Gurion University, learning Industrial Engineering & Management with specialization at Intelligent Systems, very ambitious and highly motivated with work ethic.
+            Self-learner, responsible and creative, looking for a challenging and interesting position.</h4>
+            <br>
+            <br>
+        <h3 style="color:white">Education</h3>
+        <ul>
+            <li >4th Year Industrial Engineering & Management Student Ben Gurion University, specialization at Intelligent Systems</li>
+            <li >Honorary High School Graduate Har Va'Gai High School, Kibbutz Dafna.</li>
+        </ul>
+        <br>
+        <br>
+        <h3 style="color:white">Professional Experience</h3>
+        <ul>
+            <li>Agust 2020 - current : Data scientist at OOLO.</li>
+            <li>Marth 2020 - Agust 2020 : Campiagn Opration Manager at PandoLogic</li>
+            <li>2019 - 2020 : BGU University's Tutor of Students in Industrial Engineering & Management</li>
+            <li>2019 - 2015 (seasonal) : Operational Manager of a Deciduous Orchard</li>
+            <li>2016 : C.O.O of self-picking site "Bustan HaGolan"</li>
+        </ul>
+        <br>
+        <br>
+        <h3 style="color:white">Military Service</h3>
+        <ul>
+            <li>2011 - 2014 : Servise under the Combat Engineering Special Forces.</li>
+        </ul>
+        <br>
+        <br>
+        <h3 style="color:white">Volunteer Work</h3>
+        <ul>
+            <li>Guide at hostel "Neve Ayal" for special need children</li>
+            <li>Guide & Mentor at "Science Perach"</li>
+        </ul>
+
+    </div>
+
+
+    {% include ('footer.html') %}
+
+
+</div>
+
+</body>
+</html>
+
+
