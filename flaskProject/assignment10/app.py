@@ -7,12 +7,13 @@ import mysql.connector
 
 ###### App setup
 app = Flask(__name__)
+app.secret_key = '123'
 app.config.from_pyfile('settings.py')
 
 ###### Pages
 ## Homepage
-from pages.about.about import about
-app.register_blueprint(about)
+# from pages.about.about import about
+# app.register_blueprint(about)
 
 from pages.assignment8.assignment8 import assignment8
 app.register_blueprint(assignment8)
@@ -51,9 +52,9 @@ app.register_blueprint(update_details)
 
 
 
-## About
-from pages.about.about import about
-app.register_blueprint(about)
+# ## About
+# from pages.about.about import about
+# app.register_blueprint(about)
 
 ## Catalog
 # from pages.catalog.catalog import catalog
