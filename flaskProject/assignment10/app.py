@@ -2,6 +2,7 @@ from flask import Flask
 from flask import Flask, redirect, url_for,render_template
 from flask import request, session
 import mysql.connector
+from flask import jsonify
 
 
 
@@ -191,6 +192,52 @@ def update_details():
         internet_db(query=query, query_type='commit')
         return redirect('/users')
     return 'update user details'
+
+@app.route('/assignment11/users', methods={'GET','POST'})
+def get_users():
+    if  request.method == 'GET':
+        query = "select * from users"
+        query_result = internet_db(query, query_type='fetch')
+        query_results = {}
+        for result in query_result:
+            result_dict = jsonify({
+            "id" :result[0],
+            "first_name" : result[1],
+            "last_name" : result[2],
+            "email" : result[3]
+            })
+            query_results[ f'user id {result[0]}']= result_dict
+            # print(query_results)
+
+        query_result_json = jsonify({
+            'results': query_result
+            # 'success': 'True',
+            # 'data' : query_result
+        })
+        return query_result_json
+
+@app.route('/assignment11/users/selected',defaults={'SOME_USER_ID' : 1})
+@app.route('/assignment11/users/selected/<int:SOME_USER_ID>', methods={'GET','POST'})
+def get_user_details(SOME_USER_ID):
+
+    query = "select * from users WHERE id= '%s'" % SOME_USER_ID
+    query_result = internet_db(query, query_type='fetch')
+    if len(query_result) == 0:
+        return jsonify({
+            "success" : 'False',
+            "id": '',
+            "first_name": '',
+             "last_name": '',
+            "email": ''
+        })
+    else:
+        return jsonify({
+            "success" : 'True',
+            "id" : query_result[0].id,
+            "first_name" : query_result[0].first_name,
+             "last_name"  : query_result[0].last_name,
+            "email" : query_result[0].email
+        })
 
 
 
